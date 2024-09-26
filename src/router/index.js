@@ -7,7 +7,18 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: CustomersView
+      component: CustomersView,
+      props: {
+        title: "Customers"
+      }
+    },
+    {
+      path: '/add-customer',
+      name: 'add-customer',
+      component: () => import("../views/NewCustomerView.vue"),
+      props: {
+        title: "Add Customer"
+      }
     },
 
   ]

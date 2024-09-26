@@ -11,7 +11,7 @@ defineProps({
 
 <template>
   <div class="flex justify-end">
-    <RouterLink to="add-customer"> Add Customer </RouterLink>
+    <RouterLink to="home"> Back </RouterLink>
   </div>
-  <Heading>{{ title }}</Heading>
+  <Heading> {{ title }} </Heading>
 </template>
