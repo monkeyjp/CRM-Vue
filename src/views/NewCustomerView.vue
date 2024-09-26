@@ -1,4 +1,5 @@
 <script setup>
+import { FormKit } from "@formkit/vue";
 import RouterLink from "../components/UI/RouterLink.vue";
 import Heading from "@/components/UI/Heading.vue";
 defineProps({
@@ -14,4 +15,56 @@ defineProps({
     <RouterLink to="home"> Back </RouterLink>
   </div>
   <Heading> {{ title }} </Heading>
+  <div class="mx-auto mt-10 bg-white shadow">
+    <div class="mx-auto md:w-2/3 py-20 px-6">
+      <FormKit type="form" submit-label="Add Customer">
+        <FormKit
+          type="text"
+          label="Customer Name"
+          placeholder="Enter customer's name"
+          validation="required"
+          :validation-messages="{ required: 'Customer name is required' }"
+        />
+        <FormKit
+          type="text"
+          label="Customer Last Name"
+          placeholder="Enter customer's last name"
+          validation="required"
+          :validation-messages="{ required: 'Customer last name is required' }"
+        />
+        <FormKit
+          type="email"
+          label="Customer Email"
+          placeholder="Enter customer's email"
+          validation="required|email"
+          :validation-messages="{ required: 'Customer email is required' }"
+        />
+        <FormKit
+          type="text"
+          label="Customer Phone"
+          placeholder="Phone: XXX-XXX-XXX"
+          validation="required|*matches:/^[0-9]{3}-[0-9]{3}-[0-9]{3}$/"
+          :validation-messages="{
+            required: 'Customer\'s phone number is required',
+            matches: 'The phone number format is invalid',
+          }"
+        />
+        <FormKit
+          type="text"
+          label="Company"
+          placeholder="Enter customer's company"
+        />
+        <FormKit
+          type="text"
+          label="Job Title"
+          placeholder="Enter customer's job title"
+        />
+      </FormKit>
+    </div>
+  </div>
 </template>
+<style>
+.formkit-wrapper {
+  max-width: 100%;
+}
+</style>
