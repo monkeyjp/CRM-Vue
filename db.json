@@ -1,8 +1,22 @@
 {
   "customers": [
     {
+      "id": "474b",
       "name": "Javier",
-      "id": 1
+      "lastName": "Carthy",
+      "email": "javier.pestana85@gmail.com",
+      "phone": "927-677-153",
+      "company": "4Geeks",
+      "jobTitle": "TA"
+    },
+    {
+      "id": "8bc8",
+      "name": "Javier A",
+      "lastName": "Carthy",
+      "email": "javier.pestana85@gmail.com",
+      "phone": "927-677-153",
+      "company": "4Geeks",
+      "jobTitle": "TA"
     }
   ]
 }
