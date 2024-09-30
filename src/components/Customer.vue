@@ -12,6 +12,10 @@ const props = defineProps({
 const customerName = computed(() => {
   return props.customer.name + " " + props.customer.lastName;
 });
+
+const customerState = computed(() => {
+  return props.customer.state;
+});
 </script>
 
 <template>
@@ -24,9 +28,22 @@ const customerName = computed(() => {
       <p class="text-gray-900 font-bold">{{ customer.company }}</p>
       <p class="text-gray-600">{{ customer.jobTitle }}</p>
     </td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm"></td>
+    <td class="whitespace-nowrap px-3 py-4 text-sm">
+      <button
+        class="inline-flex rounded-full px-2 text-xs font-semibold leading-5"
+        :class="[
+          customerState
+            ? 'bg-green-100 text-green-800'
+            : 'bg-red-100 text-red-800',
+        ]"
+      >
+        {{ customerState ? "Active" : "Inactive" }}
+      </button>
+    </td>
     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-      <RouterLink to="/" class="text-indigo-600 hover:text-indigo-900 mr-5"
+      <RouterLink
+        :to="{ name: 'edit-customer', params: { id: customer.id } }"
+        class="text-indigo-600 hover:text-indigo-900 mr-5"
         >Edit</RouterLink
       >
       <button class="text-red-600 hover:text-red-900">Delete</button>

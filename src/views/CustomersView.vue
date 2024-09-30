@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref, computed } from "vue";
-import axios from "axios";
+import CustomerService from "@/services/CustomerService";
 import RouterLink from "../components/UI/RouterLink.vue";
 import Heading from "@/components/UI/Heading.vue";
 import Customer from "@/components/Customer.vue";
@@ -8,8 +8,7 @@ import Customer from "@/components/Customer.vue";
 const customers = ref([]);
 
 onMounted(() => {
-  axios
-    .get("http://localhost:4000/customers")
+  CustomerService.getCustomers()
     .then(({ data }) => {
       customers.value = data;
     })
