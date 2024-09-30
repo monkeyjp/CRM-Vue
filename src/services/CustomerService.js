@@ -9,6 +9,15 @@ export default {
     },
     getCustomer(id) {
         return api.get("/customers/" + id)
+    },
+    editCustomer(id, data) {
+        return api.patch("/customers/" + id, data)
+    },
+    editState(id, data) {
+        return api.patch("/customers/" + id, data)
+    },
+    deleteCustomer(id) {
+        return api.delete("/customers/" + id)
     }
 
 }

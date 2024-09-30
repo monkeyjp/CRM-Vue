@@ -28,7 +28,11 @@ defineProps({
   },
 });
 
-const handleSubmit = (data) => {};
+const handleSubmit = (data) => {
+  CustomerService.editCustomer(id, data)
+    .then((response) => router.push({ name: "home" }))
+    .catch((error) => console.log(error));
+};
 </script>
 
 <template>
@@ -40,7 +44,7 @@ const handleSubmit = (data) => {};
     <div class="mx-auto md:w-2/3 py-20 px-6">
       <FormKit
         type="form"
-        submit-label="Add Customer"
+        submit-label="Edit Customer"
         @submit="handleSubmit"
         :value="formData"
       >

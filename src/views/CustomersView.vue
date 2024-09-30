@@ -25,6 +25,25 @@ defineProps({
 const ifCustomers = computed(() => {
   return customers.value.length > 0;
 });
+
+const updateState = ({ id, state }) => {
+  CustomerService.editState(id, { state: !state })
+    .then((response) => {
+      const i = customers.value.findIndex((customer) => customer.id === id);
+      customers.value[i].state = !state;
+    })
+    .catch((error) => console.log(error));
+};
+
+const deleteCustomer = (id) => {
+  CustomerService.deleteCustomer(id)
+    .then((response) => {
+      customers.value = customers.value.filter(
+        (customer) => customer.id !== id
+      );
+    })
+    .catch((error) => console.log(error));
+};
 </script>
 
 <template>
@@ -69,6 +88,8 @@ const ifCustomers = computed(() => {
               v-for="customer in customers"
               key="customer.id"
               :customer="customer"
+              @update-state="updateState"
+              @delete-customer="deleteCustomer"
             />
           </tbody>
         </table>

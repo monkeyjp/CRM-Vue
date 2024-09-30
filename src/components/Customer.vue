@@ -2,6 +2,8 @@
 import { computed } from "vue";
 import { RouterLink } from "vue-router";
 
+defineEmits(["update-state", "delete-customer"]);
+
 const props = defineProps({
   customer: {
     type: Object,
@@ -36,6 +38,9 @@ const customerState = computed(() => {
             ? 'bg-green-100 text-green-800'
             : 'bg-red-100 text-red-800',
         ]"
+        @click="
+          $emit('update-state', { id: customer.id, state: customer.state })
+        "
       >
         {{ customerState ? "Active" : "Inactive" }}
       </button>
@@ -46,7 +51,12 @@ const customerState = computed(() => {
         class="text-indigo-600 hover:text-indigo-900 mr-5"
         >Edit</RouterLink
       >
-      <button class="text-red-600 hover:text-red-900">Delete</button>
+      <button
+        class="text-red-600 hover:text-red-900"
+        @click="$emit('delete-customer', customer.id)"
+      >
+        Delete
+      </button>
     </td>
   </tr>
 </template>
